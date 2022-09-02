@@ -31,8 +31,39 @@
 7. Возьмите массив из data из файла mod2-array-methos/map.js и выведите все элементы из массива как верстку. Пример приведен в том же файле.
 */
 
-    let element = document.querySelector('.container');
-    console.log(element);
+    //let element = document.querySelector('h1');
+    
+    //let element = document.querySelector('h2');
+
+    //let element = document.querySelector('section:nth-child(2) p:last-of-type');
+
+    //let element = document.querySelector('strong');
+    //element.innerHTML = '<em>Javascript</em>';
+
+    const section2 = document.querySelector('section:nth-child(3)')
+    section2.innerHTML += "<img src='https://placekitten.com/200/100' alt=''>"
+
+    const cat = document.querySelector('img')
+    cat.style.border = '10px solid #fff'
+    cat.style.boxShadow = '0 0 5px #444'
+    cat.style.borderRadius = '3px'
+
+    cat.onclick = function () {
+      let i = 0, step = 10, tick = 40;
+      let self = this;
+      function a() {
+        if(i < step){
+          i++;
+          self.style.opacity = 1 - i/step;
+          setTimeout(a, tick)
+        }
+      }
+      a()
+    }
+
+    console.log(section2, typeof element);
+
+
 
   </script>
 </body>

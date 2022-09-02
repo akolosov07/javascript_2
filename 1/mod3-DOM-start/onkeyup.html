@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <input type="text" >
+  <input type="text" onkeyup="fn(this)">
   <pre id="result"></pre>
   <script>
 /* Напишите атрибут onkeyup в элементе ввода. Укажите ему значение "fn()". Напишите функцию fn(), которая будет считать и выводить в элемент с id=result информацию:
@@ -17,6 +17,18 @@
 - как выглядит введённая строка, если её привести к верхнему регистру
 */
 
+function fn(el) {
+  let str = el.value;
+
+  let obj = {
+    "Солько букв": str.length,
+    "Сколько букв а": str.split('a').length - 1,
+    "Присутствует ли в 'javascript'": str.includes('javascript'),
+    "Верхний регистр": str.toUpperCase()
+  }
+
+  result.innerHTML = JSON.stringify(obj, null, ' ')
+}
   </script>
 </body>
 </html>

@@ -44,6 +44,10 @@ const data = [
             "avatar": "https://reqres.in/img/faces/12-image.jpg"
         }
     ]
+
+console.log(data.filter(item => {
+    return item.first_name.length == 6
+}))
 	
 	
 	

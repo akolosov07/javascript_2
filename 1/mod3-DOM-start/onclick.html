@@ -7,11 +7,24 @@
   <title>Document</title>
 </head>
 <body>
-  <button>Кнопка1</button>
-  <button>Кнопка2</button>
+  <button onclick="fn(this)">Кнопка1</button>
+  <button onclick="fn2()">Кнопка2</button>
+  <hr>
+  <button>Кнопка3</button>
+  <button>Кнопка4</button>
   <script>
 /* Напишите атрибуты onclick в каждой кнопке. Напишите функции, которые будут вызываться при нажатии каждой кнопки. Функции должны выводить соответствующие строки: "Кнопка1" или "Кнопка2"*/
+    function fn(el){
+      alert(el.innerHTML)
+    }
+    function fn2(){
+      alert('Кнопка2')
+    }
+    const button3 = document.querySelector('button:nth-of-type(3)')
 
+    button3.onclick = function() {
+      alert(this.innerHTML)
+    }
   </script>
 </body>
 </html>

@@ -43,8 +43,48 @@
         Если, какое-то из однострочных полей или textarea будет заполнено, то нарисовать ему красный бордюр и вывести alert с текстом "Заполните все поля"
         */
         function check(elem){
- 
+            let param1 = document.getElementsByName('param1')[0];
+            let param2 = document.getElementsByName('param2')[0];
+            let param3 = document.getElementsByName('param3')[0];
+            let param4 = document.getElementsByName('param4')[0];
+            let param5 = document.getElementsByName('param5')[0];
+            let param6 = document.getElementsByName('param6')[0];
+            let param7 = document.getElementsByName('param7')[0];
 
+            let param8 = document.getElementsByName('param8')[0];
+            let param9 = document.getElementsByName('param9')[0];
+
+            let paramsList = [];
+            let isCorrect = true;
+            
+            paramsList.push(param1);
+            paramsList.push(param2);
+            paramsList.push(param3);
+            paramsList.push(param4);
+            paramsList.push(param5);
+            paramsList.push(param6);
+            paramsList.push(param7);
+            paramsList.push(param8);
+            paramsList.push(param9);
+            console.log(param9);
+
+            for(let i = 0; i < paramsList.length; i++) {
+                let type = paramsList[i].type;
+                let control = paramsList[i];
+                if(type != "checkbox" && control.value.length == 0) {
+                    control.classList.add('error');
+                    isCorrect = false;
+                }
+                if(type == "checkbox" && control.checked == false)
+                {
+                    control.classList.add('error');
+                    isCorrect = false;
+                }
+            }
+
+            if(isCorrect != true) alert('Заполните все поля');
+
+            return isCorrect;
         }
 
     </script>

@@ -5,6 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .selected {
+      padding: 4px;
+      border: dashed;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -28,7 +34,14 @@
 4*. Зайдите на произвольный сайт и в консоли найдите все элементы-изображения, а затем выведите их атрибуты href в виде одной строки с разделителем в виде запятой
 */
 
-    let elements = document.querySelector('.container');
+    //let elements = document.querySelectorAll('section:nth-of-type(2) p');
+
+    let elements = document.querySelectorAll('strong');
+
+    for(let i = 0; i < elements.length; i++){
+      elements[i].className = 'selected'
+    }
+
     console.log(elements);
 
   </script>

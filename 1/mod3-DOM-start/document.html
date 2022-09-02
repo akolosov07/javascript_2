@@ -11,7 +11,7 @@
       Тело кредита <input type="text" id="S" value="2000000" > руб.<br>
       Проценты <input type="text" id="p" value="9.5">%<br>
       Продолжительность <input type="text" id="n" value="5"> лет<br>
-      <input type="button"  value='Найти'>
+      <input type="button" onclick="mortgage()" value='Найти'>
       <hr />
       <pre>Результат: <strong id="result">0</strong></pre>
   </form>
@@ -19,7 +19,15 @@
   /* Укажите в кнопке "Найти" атрибут onclick со значением "mortgage()" и реализуйте функцию mortgage() так, чтобы она по идентификаторам S, p и n получала данные из полей ввода, переводила данные в числовой вид и вычисляла аннуитетный ипотечный платёж. Результат должен записываться в элемент с идентификатором "result" */
 
   function mortgage(){
+    let summa = parseInt(S.value);
+    let percent = parseFloat(p.value);
+    let months = parseFloat(n.value) * 12;
 
+    percent /= 1200;
+
+    let A = summa * percent / (1 - (percent + 1) ** (-months))
+
+    result.innerHTML = A.toFixed(2)
   }
   </script>
 </body>

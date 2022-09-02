@@ -23,7 +23,20 @@
   <div id="result">16:47:10</div>
   <script>
     /*Напишите скрипт, который будет выводить текущее время в элементе с идентификатором result. Нужно использовать setInterval или setTimeout*/
+    (function (minutes)  {
+      // время завершения работы таймера
+      let stopTimer = new Date(new Date().getTime() + minutes*60*1000);
 
+    function my(){
+      const currentdt = new Date();
+      const time = currentdt.toLocaleTimeString();
+      result.innerHTML = time;
+      if(currentdt <= stopTimer) {
+      setTimeout(my, 1000);
+      }
+    };
+    my()
+  })(1)
   </script>
 </body>
 </html>
