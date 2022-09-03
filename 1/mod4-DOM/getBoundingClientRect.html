@@ -21,8 +21,27 @@
   <script>
     /* 1. При помощи getBoundingClientRect() найти размер и позицию элемента с идентификатором test */
     const test = document.querySelector('#test');
+    const {
+      height,
+      width,
+      x,
+      y
+    } = test.getBoundingClientRect();
+    console.log(height,
+      width,
+      x,
+      y)
 
     /* 2. При помощи таймера анимировать перемещение элемента с идентификатором test по диагонали. Примечание: нужно менять стилевые свойства  */
+    let i = 0, step = 400, tick = 10;
+    (function a() {
+      if(i < step) {
+        i++
+        test.style.left = x + i + 'px';
+        test.style.top = y + i + 'px';
+        setTimeout(a, tick)
+      }
+  })();
 
   </script>
 </body>

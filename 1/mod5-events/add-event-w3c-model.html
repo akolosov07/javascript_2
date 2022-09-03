@@ -36,7 +36,9 @@
       const id = card.getAttribute('data-id');
       alert(`Добавлен товар ${id}`)
     }
-    document.querySelector('button').addEventListener('click', addBasket)
+    //document.querySelector('button').addEventListener('click', addBasket)
+    const cards = document.querySelectorAll('.container .card button')
+    cards.forEach(card => card.addEventListener('click', addBasket))
   </script>
 </body>
 </html>

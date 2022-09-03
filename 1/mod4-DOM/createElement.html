@@ -22,7 +22,28 @@
   */
 
    function addForm(){
+    let divformSearch = document.querySelector('#form-search');
+    if (divformSearch) return;
+    divformSearch = document.createElement('div');
+    divformSearch.id = 'form-search';
 
+    const h2 = document.createElement('h2');
+    h2.innerHTML = 'Форма поиска';
+    divformSearch.appendChild(h2);
+
+    const form = document.createElement('form');
+    form.action = 'https://yandex.ru/search/';
+    divformSearch.appendChild(form);
+
+    const inputText = document.createElement('input');
+    inputText.name = "text";
+    form.appendChild(inputText);
+
+    const inputSubmit = document.createElement('input');
+    inputSubmit.type = "submit";
+    form.appendChild(inputSubmit);
+
+    document.body.appendChild(divformSearch)
    } 
   </script>
 </body>

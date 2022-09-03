@@ -13,9 +13,21 @@
     /* Попробуйте нажать на кнопку, убедитесь что происходит переход на несуществующий адрес. Назначьте элементу a обработчик fn на нажатие (событие onclick). Внутри обработчика выполните метод отмены действия по умолчанию preventDefault(), чтобы теперь не было перехода */
     let a = document.querySelector('a')
 
-    function fn(ev){
+    a.addEventListener('click', fn)
 
+    function fn(ev){
+      if(!ev.altKey)
+      ev.preventDefault();
     }
+  </script>
+
+  <form action="https://yandex.ru/search">
+    <input type="hidden" name="text" value="курсы Javascript specialist.ru">
+    <input type="submit">
+  </form>
+  <script>
+    let form = document.querySelector('form')
+    form.addEventListener('click', fn)
   </script>
 </body>
 </html>

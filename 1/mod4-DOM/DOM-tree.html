@@ -39,8 +39,33 @@
       */
     const em = document.querySelector('em');
     console.log(em);
-
+    console.log(em.previousSibling);
     
+    // - текстовый узел со словом "просто" 
+    console.log(em.previousSibling.nodeType);
+    console.log(em.previousSibling.nodeName);
+    console.log(em.previousSibling.nodeValue);
+
+    // - текстовый узел со словом " текста"
+    console.log(em.nextSibling);
+
+    //- текстовый узел со словом "пример"
+    console.log(em.firstChild);
+
+    // - родительский узел для em
+    console.log(em.parentNode);
+
+    // - все дочерние узлы параграфа
+    console.log(em.parentNode.childNodes);
+
+    // - последний узел параграфа (сначала найти параграф, потом последний узел параграфа) 
+    console.log(em.parentNode.lastChild);
+    
+
+    // 2 Поменяйте программно слово "пример" на "изучение"
+    // em.innerHTML = 'изучение';
+    em.firstChild.nodeValue = 'изучение';
+
   </script>
 </body>
 </html>

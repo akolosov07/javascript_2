@@ -22,7 +22,20 @@
     /* Написать функцию add(), которая будет создавать клон первого элемента списка, заполнять его текст содержимым из  <input type="text" /> и добавлять к ul
    */
    function add(){
-    
+    let li = ul.querySelector('li');
+    let cloneLi = li.cloneNode(false);
+
+    let text = addRow.elements[0].value;
+
+    if( !text.trim()) return;
+
+    addRow.elements[0].value = ''
+
+    cloneLi.innerHTML = text;
+    ul.appendChild(cloneLi)
+
+    // фокус
+    addRow.elements[0].focus()
    }
 
  </script>

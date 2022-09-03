@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #game {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cell {
+            width: 33%;
+            height: 33%;
+            border: 1px solid #000;
+            font-size: 3rem;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell">o</div>
+        <div class="cell"><a href="#">x</a></div>
+    </div>
+        
+    <script>
+        const game = document.querySelector('#game')
+
+        const fields = [
+            ['','',''],
+            ['','',''],
+            ['','',''],
+        ]
+
+        let isXTurn = true;
+
+        function checkWin() {
+            const f = fields;
+            if(f[0][0] == f[0][1] && f[0][1] == f[0][2]) {
+                alert('Победил ' + f[0][0])
+                return;
+            }
+            if(f[1][0] == f[1][1] && f[1][1] == f[1][2]) {
+                alert('Победил ' + f[0][0])
+                return;
+            }
+            if(f[2][0] == f[2][1] && f[2][1] == f[2][2]) {
+                alert('Победил ' + f[0][0])
+                return;
+            }
+
+            if(f[0][0] == f[1][0] && f[1][0] == f[0][0]) {
+                alert('Победил ' + f[0][0])
+                return;
+            }
+        }
+
+        function turn(ev) {
+            let char = isXTurn ? 'o' : 'x';
+
+            let i = ev.target.dataset['i']
+            let j = ev.target.dataset['j']
+
+            if(fields[i][j] != '') return;
+
+            fields[i][j] = char;
+            
+
+            draw(fields);
+            checkWin();
+
+            isXTurn = !isXTurn;
+        }
+
+        function draw(fields){
+            game.innerHTML = '';
+            for(let i = 0; i < 3; i++){
+                for(let j = 0; j < 3; j++){
+                    let cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.innerHTML = fields[i][j]
+
+                    cell.setAttribute('data-i', i)
+                    cell.setAttribute('data-j', j)
+
+                    game.appendChild(cell);
+
+                    cell.addEventListener('click', turn)
+                }
+            }
+        }
+        draw(fields);
+    </script>
+</body>
+</html>

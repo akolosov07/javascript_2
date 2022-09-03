@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="test">
+    <pre id="result"></pre>
+    <script>
+        const test = document.querySelector('#test')
+
+        const handler = ev => {
+            const pre = document.querySelector('#result')
+            const str = ev.target.value
+            const res = {
+                "Солько букв": str.length,
+                "Сколько букв а": str.split('a').length - 1,
+                "Присутствует ли в 'javascript'": str.includes('javascript'),
+                "Верхний регистр": str.toUpperCase()
+            }
+
+            pre.innerHTML = JSON.stringify(res, null, ' ')
+        }
+
+        test.addEventListener('change', handler)
+
+    </script>
+</body>
+</html>
