@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            background: rgb(233, 252, 204);
+            padding: 20px;
+        }
+        .wrapper button {
+            display: inline-block;
+            margin: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <button>Кнопка1</button>
+        <button>Кнопка2</button>
+    </div>
+    <pre id="result"></pre>
+    <script>
+        let button = document.querySelector('.wrapper');
+        button.addEventListener('click', function(ev){
+                button.dispatchEvent(new CustomEvent('foo', {
+                detail : {
+                    x: 10,
+                    str: 'Привет'
+                }
+            }))
+        })
+
+        button.addEventListener('foo', function(ev){
+            result.innerHTML += JSON.stringify(ev.detail, null, ' ');
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function makeDough(){
+            return 'Смешать все ингридиенты и тщательно замесить'
+        }
+        async function waitDough() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve('Закрыть тканью и оставить на один час в теплом помещении'),
+                5000
+                );
+            })
+        }
+
+        async function bakeDough() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve('Печь'),
+                10000
+                );
+            })
+        }
+
+        async function makeBread() {
+            let step1 = await makeDough();
+            console.log('Шаг1', step1);
+
+            let step2 = await waitDough();
+            console.log('Шаг2', step2);
+
+            let step3 = await bakeDough();
+            console.log('Шаг3', step3);
+
+            return `${step1}\n${step2}\n${step3}`;
+        }
+        makeBread()
+        .then(result => console.log(result));
+    </script>
+</body>
+</html>

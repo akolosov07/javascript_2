@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        #completed li {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>ToDoList</h1>
+        <input type="text" id="text">
+        <button id="btnAdd">Добавить</button>
+
+        <hr>
+        <h3>Список/List</h3>
+        <div id="list">
+            <!--<ul>
+                <li>Lorem. <a href="#">Удалить</a></li>
+            </ul>-->
+        </div>
+        <hr>
+        <h3>Выполненные/Completed</h3>
+        <div id="completed">
+            <!--<ul>
+                <li>Lorem. <a href="#">Удалить</a></li>
+            </ul>-->
+        </div>
+
+    </div>
+    <script>
+        const inputText = document.querySelector('#text');
+        const btnAdd = document.querySelector('#btnAdd');
+        const divList = document.querySelector('#list');
+        const divCompleted = document.querySelector('#completed');
+
+        let todoList = [];
+        btnAdd.addEventListener('click', function(ev) {
+            const text = inputText.value;
+
+            if(!text.trim()) return;
+
+            const uid = uuid.v4();
+
+            const item = {
+                uid,
+                text,
+                status: 'uncompleted'
+            }
+
+            todoList.push(item);
+            inputText.value = '';
+            inputText.focus()
+            render();
+        })
+
+        function render() {
+            divList.innerHTML = '';
+            divCompleted.innerHTML = '';
+
+            const uncompletedItems = todoList.filter(
+                item => item.status == 'uncompleted'
+            )
+
+            const ulUncompleted = document.createElement('ul');
+            uncompletedItems.forEach(item => {
+                const li = document.createElement('li');
+                const text = document.createTextNode(item.text);
+                li.appendChild(text);
+                li.setAttribute('data-uid', item.uid);
+
+                li.addEventListener('click', function(ev){
+                    if(ev.target.nodeName != 'LI') return;
+                    let id = this.getAttribute('data-uid');
+
+                    todoList.forEach(item => {
+                        if(item.uid == id)
+                        item.status = 'uncompleted';
+                    })
+
+                    render()
+                })
+
+                const a = document.createElement('a');
+                a.innerHTML = 'Удалить'
+                a.href = '#';
+                a.addEventListener('click', function(ev){
+                    ev.preventDefault();
+                    
+                    let id = this.parentNode.getAttribute('data-uid');
+                    
+                    todoList = todoList.filter(
+                        item => item.uid != id
+                    )
+
+                    render();
+                })
+
+                li.appendChild(a);
+                ulUncompleted.appendChild(li);
+            })
+
+            divList.appendChild(ulUncompleted);
+            
+            const completedItems = todoList.filter(
+                item => item.status == 'completed'
+            )
+            
+            const ulCompleted = document.createElement('ul');
+            completedItems.forEach(item => {
+                const li = document.createElement('li');
+                const text = document.createTextNode(item.text);
+                li.appendChild(text);
+
+                const a = document.createElement('a');
+                a.innerHTML = 'Удалить'
+                a.addEventListener('click', function(ev){
+                    ev.preventDefault();
+                    alert('Удалено');
+                })
+
+                ulCompleted.appendChild(li);
+            })
+            divCompleted.appendChild(ulCompleted);
+        }
+    </script>
+</body>
+</html>

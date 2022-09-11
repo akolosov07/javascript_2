@@ -10,7 +10,7 @@
   <div id="result"></div>
   <script>
     /* Переписать функцию sum, чтобы она стала асинхронной функцией */
-    function sum(a,b){
+    async function sum(a,b){
       return a + b;
     }
     
@@ -20,7 +20,7 @@
       console.log(res)
       document.querySelector('#result').innerHTML = res
     }
- 
+    fn();
 
   </script>
 </body>

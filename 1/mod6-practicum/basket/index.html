@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        td {
+            border: 1px solid #000;
+        }
+        .qty{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        На основе исходных данных
+        const items = [
+        {
+            uid: 234234,
+            title: 'Товар1',
+            qty: 2,
+            price: 1000,
+
+        },
+        {
+            uid: 234235,
+            title: 'Товар2',
+            qty: 3,
+            price: 500,
+        }
+        ]
+        при нажатии удалить пункт исчезает из корзины и 
+        итоговая цена должна пересчитываться,
+        при нажатии на '-' или '+' количество товаров должно пересчитываться
+        (нельзя делать числа менее нуля)
+        при изменении input wtyf ljk;yf gthtcxbnsdfnmcz
+        Построить программно корзину ниже
+    -->
+    <!--<div>
+        <h1>Корзина</h1>
+
+        <table>
+            <tr>
+                <td>#п/п</td>
+                <td>Название товара</td>
+                <td>Количество</td>
+                <td>Цена за ед.</td>
+                <td>Всего</td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Товар1</td>
+                <td>
+                    <button>-</button>
+                    <input type="text" value="2" class="qty">
+                    <button>+</button>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="#">Удалить</a>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4">Итого:</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>-->
+
+    <div id="basket">
+        
+    </div>
+
+    <script src="./basket.js"></script>
+</body>
+</html>

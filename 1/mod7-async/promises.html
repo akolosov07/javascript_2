@@ -11,7 +11,9 @@
   <script>
     /* Переписать функцию sum, чтобы она возвращала промис с результатом */
     function sum(a,b){
-      return a + b;
+      return new Promise( (resolve) => {
+        resolve(a + b);
+      })
     }
     
     /* т.е. нижележащий код должен заработать */
