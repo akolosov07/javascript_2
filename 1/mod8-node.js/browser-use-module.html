@@ -7,7 +7,16 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="resut"></div>
+  <div id="result"></div>
   <!-- Создайте блок  <script type="module"></script>, внутри него импортируйте функцию из модуля mymodule.js. Вызовите функцию и результат выведите в блок с идентификатором result -->
+  <script type="module">
+    import {mortgage, overpayment} from './mymodule.js'
+
+    const mortgageValue = mortgage(1e7, 10, 15);
+    const overpaymentValue = overpayment(1e7, 10, 15);
+
+    result.innerHTML = `Платеж: ${mortgageValue.toFixed(2)} руб<br />`
+    result.innerHTML += `Переплата: ${overpaymentValue.toFixed(2)} руб<br />`
+  </script>
 </body>
 </html>

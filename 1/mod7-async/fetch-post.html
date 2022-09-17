@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <form>
+        <div class="row">Название заметки<input type="text" id="title"></div>
+        <div class="row"><textarea id="body"></textarea></div>
+        <div class="row"><input type="hidden" name="userid" value="3" id="userid"></div>
+        <div class="row"><button>Добавить</button></div>
+    </form>
+  
+  <div id="data"></div>
+  <script>
+    /* Назначить асинхронный обработчик для кнопки button, который через fetch API делает запрос на адрес https://jsonplaceholder.typicode.com/users и визуализирует произвольным способом данные внутри блока с идентификатором users */
+    let form = document.querySelector('form');
+    let btn = document.querySelector('button');
+    form.addEventListener('submit', (ev) => ev.preventDefault());
+
+    async function get(ev){
+      const BASE_URL = 'https://jsonplaceholder.typicode.com/';
+      const url = BASE_URL + 'posts';
+      
+      const element = document.querySelector('#data');
+
+      let title = document.querySelector('#title').value;
+      let body = document.querySelector('#body').value;
+      let userid = document.querySelector('#userid').value;
+      
+      let data = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          title: title.value,
+          body: body.value,
+          userid: userid.value
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(result => result.json())
+
+      element.innerHTML = '';
+
+      element.innerHTML += "<pre>" + JSON.stringify(data, null, ' ') + "</pre><hr />"
+
+      title.value = '';
+      body.value = '';
+      userid.value = '';
+      
+    }
+    btn.addEventListener('click', get);
+  </script>
+  
+
+  </div>
+</body>
+</html>

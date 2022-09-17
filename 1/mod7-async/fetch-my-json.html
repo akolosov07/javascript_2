@@ -7,29 +7,24 @@
   <title>Document</title>
 </head>
 <body>
-  <button>Получить список пользователей</button>
-  <div id="users"></div>
+  <button>Получить</button>
+  <div id="data"></div>
   <script>
     /* Назначить асинхронный обработчик для кнопки button, который через fetch API делает запрос на адрес https://jsonplaceholder.typicode.com/users и визуализирует произвольным способом данные внутри блока с идентификатором users */
     let btn = document.querySelector('button');
     async function get(){
-      const BASE_URL = 'https://jsonplaceholder.typicode.com/';
-      const url = BASE_URL + 'users';
-      const divUsers = document.querySelector('#users');
+      const BASE_URL = 'http://127.0.0.1:5500/1/';
+      const url = BASE_URL + 'mod7-async/data.json';
+      
+      const element = document.querySelector('#data');
 
-      let users = await fetch(url)
+      let data = await fetch(url)
       .then(result => result.json())
-      divUsers.innerHTML = '';
-      users.forEach(user => {
-        divUsers.innerHTML += `
-        <div class="user">
-          <div class="name">${user.name}</div>
-          <div class="email">${user.email}</div>
-          <div class="phone">${user.phone}</div>
-          <div class="website">${user.website}</div>
-        </div>
-        <hr>
-        `
+
+      element.innerHTML = '';
+
+      data.forEach(user => {
+        element.innerHTML += "<pre>" + JSON.stringify(user, null, ' ') + "</pre><hr />"
       })
     }
     btn.addEventListener('click', get);
